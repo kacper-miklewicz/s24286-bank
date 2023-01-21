@@ -12,6 +12,7 @@ public class S24286BankApplication {
 
 		System.out.println(this.bankingService.makeTransfer("1", 100));
 		System.out.println(this.bankingService.makeTransfer("1", 200));
+		System.out.println(this.bankingService.depositMoney("1", 500));
 	}
 
 	public static void main(String[] args) {

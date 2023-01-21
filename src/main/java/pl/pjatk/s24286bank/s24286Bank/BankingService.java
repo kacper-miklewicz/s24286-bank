@@ -10,20 +10,31 @@ public class BankingService {
         this.clientStorage = clientStorage;
     }
 
-    public Transfer makeTransfer(String clientID, double value) {
+    public Transaction makeTransfer(String clientID, double value) {
         Client client = clientStorage.getClientByID(clientID);
 
         if (client == null) {
             System.out.println("There's no such a client!");
-            return new Transfer(TransferStatus.DECLINED, 0);
+            return new Transaction(TransactionStatus.DECLINED, 0);
         }
 
         if (client.getBalance() < value) {
-            return new Transfer(TransferStatus.DECLINED, client.getBalance());
+            return new Transaction(TransactionStatus.DECLINED, client.getBalance());
         }
 
         client.setBalance(client.getBalance() - value);
-        return new Transfer(TransferStatus.ACCEPTED, client.getBalance());
+        return new Transaction(TransactionStatus.ACCEPTED, client.getBalance());
     }
 
+    public Transaction depositMoney(String clientID, double value) {
+        Client client = clientStorage.getClientByID(clientID);
+
+        if (client == null) {
+            System.out.println("There's no such a client!");
+            return new Transaction(TransactionStatus.DECLINED, 0);
+        }
+
+        client.setBalance(client.getBalance() + value);
+        return new Transaction(TransactionStatus.ACCEPTED, client.getBalance());
+    }
 }
