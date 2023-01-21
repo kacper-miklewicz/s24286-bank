@@ -5,9 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class S24286BankApplication {
+	private final BankingService bankingService;
 
-	public S24286BankApplication() {
-//		System.out.println("test");
+	public S24286BankApplication(BankingService bankingService) {
+		this.bankingService = bankingService;
+
+		System.out.println(this.bankingService.makeTransfer("1", 100));
+		System.out.println(this.bankingService.makeTransfer("1", 200));
 	}
 
 	public static void main(String[] args) {
