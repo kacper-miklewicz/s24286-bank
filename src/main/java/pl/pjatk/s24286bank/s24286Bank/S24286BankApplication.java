@@ -10,9 +10,15 @@ public class S24286BankApplication {
 	public S24286BankApplication(BankingService bankingService) {
 		this.bankingService = bankingService;
 
+		this.bankingService.registerClient("1", 2000);
+		this.bankingService.registerClient("2", 5000);
+		this.bankingService.registerClient("3", 7000);
+
 		System.out.println(this.bankingService.makeTransfer("1", 100));
 		System.out.println(this.bankingService.makeTransfer("1", 200));
 		System.out.println(this.bankingService.depositMoney("1", 500));
+
+		System.out.println(this.bankingService.findClient("1"));
 	}
 
 	public static void main(String[] args) {

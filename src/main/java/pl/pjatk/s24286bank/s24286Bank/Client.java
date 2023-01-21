@@ -2,27 +2,15 @@ package pl.pjatk.s24286bank.s24286Bank;
 
 public class Client {
     private String ID;
-    private String name;
-    private String surname;
     private double balance;
 
-    public Client(String ID, String name, String surname, double initialBalance) {
+    public Client(String ID, double initialBalance) {
         this.ID = ID;
-        this.name = name;
-        this.surname = surname;
         this.balance = initialBalance;
     }
 
     public String getID() {
         return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
     }
 
     public double getBalance() {
@@ -37,8 +25,6 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "ID='" + ID + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
                 ", balance=" + balance +
                 '}';
     }

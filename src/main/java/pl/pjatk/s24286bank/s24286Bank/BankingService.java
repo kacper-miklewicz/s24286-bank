@@ -10,6 +10,10 @@ public class BankingService {
         this.clientStorage = clientStorage;
     }
 
+    public void registerClient(String ID, double balance) {
+        this.clientStorage.addClient(new Client(ID, balance));
+    }
+
     public Transaction makeTransfer(String clientID, double value) {
         Client client = clientStorage.getClientByID(clientID);
 
@@ -36,5 +40,9 @@ public class BankingService {
 
         client.setBalance(client.getBalance() + value);
         return new Transaction(TransactionStatus.ACCEPTED, client.getBalance());
+    }
+
+    public Client findClient(String ID) {
+        return clientStorage.getClientByID(ID);
     }
 }
